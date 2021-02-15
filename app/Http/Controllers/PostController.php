@@ -54,6 +54,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        dd($post);
         // $data = Post::find($post);
         // $data = User::find($post);
         // return view('post.show',compact('data'));
@@ -69,7 +70,6 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
-        dd($post);
     }
 
     /**
@@ -93,5 +93,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        Post::find($post->id)->delete();
+        return redirect()->back();
     }
 }

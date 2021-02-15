@@ -51,6 +51,8 @@ class ProfileController extends Controller
     public function show($id)
     {
         //
+        // $user_id = AuthenticatesUsers::->user->id();
+        
         $data = User::find($id);
         $data_post = FacadesDB::table('users')
             ->join('posts', 'users.id', '=', 'posts.user_id')

@@ -49,7 +49,10 @@
                             <a class="dropdown-item dropdown-item-back" data-bs-toggle="modal" data-bs-target="#EditPost" onClick="OpenEditPost('{{$row->id}}')">Edit post</a>
                             <a class="dropdown-item dropdown-item-back" href="#">Edit status post</a>
                             <div class="dropdown-divider" style="border-top:1px solid rgb(176 179 184) !important;"></div>
-                            <a class="dropdown-item dropdown-item-back" href="#">Delete post</a>
+                            <form action=" {{route('post.destroy' , $row->id)}} " method="POST">
+                            @csrf @method('DELETE')
+                                <button class="dropdown-item dropdown-item-back" type="submit">Delete post</button>
+                            </form>
                         </div>
 
                     </div>
@@ -208,16 +211,8 @@
 </div>
 
 <script>
-    function OpenEditPost($post_id) {
-        $.ajax({
-            url: "{{ route('post.show' , 0)}}",
-            type: "POST",
-            data: $post_id,
-            cache: false,
-            success: function(response) {
-                
-            }
-        });
+    function OpenEditPost(post_id) {
+
     }
 </script>
 
